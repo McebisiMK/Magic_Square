@@ -1,5 +1,4 @@
 ﻿using Magic_Square.Interfaces;
-using System;
 using System.Linq;
 
 namespace Magic_Square.Services
@@ -32,5 +31,6 @@ namespace Magic_Square.Services
         {
             return _nextDirection != null;
         }
+
     }
 }
