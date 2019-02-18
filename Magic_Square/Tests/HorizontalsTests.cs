@@ -8,6 +8,29 @@ namespace Magic_Square.Tests
     [TestFixture]
     class HorizontalsTests
     {
+
+        [Test]
+        public void IsMagicSquare_GivenAllHorizontalsAreTheSameAsGivenSum_ShouldProceedToCheckNextDirection()
+        {
+            //----------------------Arrange---------------------------
+            int sum = 15;
+            var square = new[]{ new[] { 4, 9, 2 },
+                                new[] { 3, 5, 7 },
+                                new[] { 8, 1, 6 } };
+
+            var horizontals = CreateHorizontals();
+            var verticals = Substitute.For<IMagic_Square>();
+
+            horizontals.SetSuccessor(verticals);
+
+            //----------------------Act-------------------------------
+            horizontals.IsMagicSquare(square, sum);
+
+            //----------------------Assert----------------------------
+            verticals.Received(1).IsMagicSquare(square, sum);
+
+        }
+
         [Test]
         public void IsMagicSquare_GivenTopHorizontalLineWithSumDifferThanGivenSum_ShouldReturnFalse()
         {
@@ -71,28 +94,6 @@ namespace Magic_Square.Tests
 
             //----------------------Assert----------------------------
             Assert.IsFalse(actual);
-
-        }
-
-        [Test]
-        public void IsMagicSquare_GivenAllHorizontalsAreTheSameAsGivenSum_ShouldProceedToCheckNextDirection()
-        {
-            //----------------------Arrange---------------------------
-            int sum = 15;
-            var square = new[]{ new[] { 4, 9, 2 },
-                                new[] { 3, 5, 7 },
-                                new[] { 8, 1, 6 } };
-
-            var horizontals = CreateHorizontals();
-            var verticals = Substitute.For<IMagic_Square>();
-
-            horizontals.SetSuccessor(verticals);
-
-            //----------------------Act-------------------------------
-            horizontals.IsMagicSquare(square, sum);
-
-            //----------------------Assert----------------------------
-            verticals.Received(1).IsMagicSquare(square, sum);
 
         }
 

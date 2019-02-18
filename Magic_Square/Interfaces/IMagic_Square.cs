@@ -9,6 +9,6 @@ namespace Magic_Square.Interfaces
     public interface IMagic_Square
     {
         void SetSuccessor(IMagic_Square nextDirection);
-        bool IsMagicSquare(int[][] square,int sum);
+        bool ismagicsquare(int[][] square, int sum);
     }
 }

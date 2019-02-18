@@ -8,6 +8,29 @@ namespace Magic_Square.Tests
     [TestFixture]
     class VerticalsTests
     {
+
+        [Test]
+        public void IsMagicSquare_GivenAllVerticalLinesAreTheSameAsGivenSum_ShouldCheckNextDirection()
+        {
+            //-------------------Arrange------------------------
+            var sum = 15;
+            var square = new[] {new[] { 4, 9, 3 },
+                                new[] { 3, 5, 6 },
+                                new[] { 8, 1, 6 } };
+
+            var verticals = CreateVerticals();
+            var diagonals = Substitute.For<IMagic_Square>();
+
+            verticals.SetSuccessor(diagonals);
+
+            //-------------------Act----------------------------
+            verticals.IsMagicSquare(square, sum);
+
+            //-------------------Assert-------------------------
+            diagonals.Received(1).IsMagicSquare(square, sum);
+
+        }
+
         [Test]
         public void IsMagicSquare_GivenLeftVerticalLineDifferFromGivenSum_ShouldReturnFalse()
         {
@@ -71,28 +94,6 @@ namespace Magic_Square.Tests
 
             //-------------------Assert-------------------------
             Assert.IsFalse(actual);
-
-        }
-
-        [Test]
-        public void IsMagicSquare_GivenAllVerticalLinesAreTheSameAsGivenSum_ShouldCheckNextDirection()
-        {
-            //-------------------Arrange------------------------
-            var sum = 15;
-            var square = new[] {new[] { 4, 9, 3 },
-                                new[] { 3, 5, 6 },
-                                new[] { 8, 1, 6 } };
-
-            var verticals = CreateVerticals();
-            var diagonals = Substitute.For<IMagic_Square>();
-
-            verticals.SetSuccessor(diagonals);
-
-            //-------------------Act----------------------------
-            verticals.IsMagicSquare(square, sum);
-
-            //-------------------Assert-------------------------
-            diagonals.Received(1).IsMagicSquare(square, sum);
 
         }
 

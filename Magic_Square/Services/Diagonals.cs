@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Magic_Square.Services
 {
-    public class Diagonals:IMagic_Square
+    public class Diagonals : IMagic_Square
     {
         private IMagic_Square _nextDirection;
         public void SetSuccessor(IMagic_Square nextDirection)
@@ -23,7 +23,7 @@ namespace Magic_Square.Services
             return validDiagonals;
         }
 
-        private int [][] GetDiagonals(int[][] square)
+        private int[][] GetDiagonals(int[][] square)
         {
             var length = square.Length;
             var topLeftToBottomRight = Enumerable.Range(0, length)

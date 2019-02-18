@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Magic_Square.Services
 {
-    public class Horizontals:IMagic_Square
+    public class Horizontals : IMagic_Square
     {
         private IMagic_Square _nextDirection;
         public void SetSuccessor(IMagic_Square nextDirection)
@@ -11,7 +11,7 @@ namespace Magic_Square.Services
             _nextDirection = nextDirection;
         }
 
-        public bool IsMagicSquare(int[][] square,int sum)
+        public bool IsMagicSquare(int[][] square, int sum)
         {
             var validHorizontals = IsValid(square, sum);
 
@@ -22,7 +22,7 @@ namespace Magic_Square.Services
             return validHorizontals;
         }
 
-        private bool IsValid(int[][] square,int sum)
+        private bool IsValid(int[][] square, int sum)
         {
             return square.All(line => line.Sum() == sum);
         }

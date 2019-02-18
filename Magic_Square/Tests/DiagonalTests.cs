@@ -8,6 +8,27 @@ namespace Magic_Square.Tests
     [TestFixture]
     class DiagonalTests
     {
+
+        [Test]
+        public void IsMagicSquare_GivenAllDiagonalsLinesAreTheSameAsGivenSum_ShouldCheckNextDirection()
+        {
+            //--------------------Arrange-----------------------
+            var sum = 15;
+            var square = new[] {new[] { 4, 9, 2 },
+                                new[] { 3, 5, 6 },
+                                new[] { 8, 1, 6 } };
+            var diagonals = CreateDiagonals();
+            var horizontals = Substitute.For<IMagic_Square>();
+
+            diagonals.SetSuccessor(horizontals);
+
+            //--------------------Act---------------------------
+            diagonals.IsMagicSquare(square, sum);
+
+            //--------------------Assert------------------------
+            horizontals.Received(1).IsMagicSquare(square, sum);
+        }
+
         [Test]
         public void IsMagicSquare_GivenTopLeftToBottomRightDiagonalLineDifferThanSum_ShouldReturnFalse()
         {
@@ -46,26 +67,6 @@ namespace Magic_Square.Tests
 
             //--------------------Assert------------------------
             Assert.IsFalse(actual);
-        }
-
-        [Test]
-        public void IsMagicSquare_GivenAllDiagonalsLinesAreTheSameAsGivenSum_ShouldCheckNextDirection()
-        {
-            //--------------------Arrange-----------------------
-            var sum = 15;
-            var square = new[] {new[] { 4, 9, 2 },
-                                new[] { 3, 5, 6 },
-                                new[] { 8, 1, 6 } };
-            var diagonals = CreateDiagonals();
-            var horizontals = Substitute.For<IMagic_Square>();
-
-            diagonals.SetSuccessor(horizontals);
-
-            //--------------------Act---------------------------
-            diagonals.IsMagicSquare(square, sum);
-
-            //--------------------Assert------------------------
-            horizontals.Received(1).IsMagicSquare(square, sum);
         }
 
         private static Horizontals CreateHorizontals()
