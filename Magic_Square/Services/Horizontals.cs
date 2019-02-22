@@ -31,6 +31,5 @@ namespace Magic_Square.Services
         {
             return _nextDirection != null;
         }
-
     }
 }
