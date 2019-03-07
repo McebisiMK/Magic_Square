@@ -14,13 +14,13 @@ namespace Magic_Square.Services
         public bool IsMagicSquare(int[][] square, int sum)
         {
             var verticals = GetVerticals(square);
-            var validVerticals = IsValid(verticals, sum);
+            var VerticalsState = IsValid(verticals, sum);
 
-            if (validVerticals && HasNextDirectiom())
+            if (HaveNextDirection(VerticalsState))
             {
                 _nextDirection.IsMagicSquare(square, sum);
             }
-            return validVerticals;
+            return VerticalsState;
         }
 
         private int[][] GetVerticals(int[][] square)
@@ -42,6 +42,11 @@ namespace Magic_Square.Services
         private bool HasNextDirectiom()
         {
             return _nextDirection != null;
+        }
+
+        private bool HaveNextDirection(bool validVerticals)
+        {
+            return validVerticals && HasNextDirectiom();
         }
     }
 }
