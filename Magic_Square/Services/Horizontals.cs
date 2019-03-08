@@ -15,7 +15,7 @@ namespace Magic_Square.Services
         {
             var HorizontalsState = IsValid(square, sum);
 
-            if (HaveNextDirection(HorizontalsState))
+            if (NotLastDirection(HorizontalsState))
             {
                 _nextDirection.IsMagicSquare(square, sum);
             }
@@ -32,7 +32,7 @@ namespace Magic_Square.Services
             return _nextDirection != null;
         }
 
-        private bool HaveNextDirection(bool validHorizontals)
+        private bool NotLastDirection(bool validHorizontals)
         {
             return validHorizontals && HasNextDirection();
         }

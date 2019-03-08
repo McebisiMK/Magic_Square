@@ -16,7 +16,7 @@ namespace Magic_Square.Services
             var diagonals = GetDiagonals(square);
             var DiagonalsState = IsValid(diagonals, sum);
 
-            if (HaveNextDirection(DiagonalsState))
+            if (NotLastDirection(DiagonalsState))
             {
                 _nextDirection.IsMagicSquare(square, sum);
             }
@@ -47,7 +47,7 @@ namespace Magic_Square.Services
             return _nextDirection != null;
         }
 
-        private bool HaveNextDirection(bool validDiagonals)
+        private bool NotLastDirection(bool validDiagonals)
         {
             return validDiagonals && HasNextDirection();
         }
