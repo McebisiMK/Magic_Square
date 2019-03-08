@@ -8,7 +8,7 @@ namespace Magic_Square.Interfaces
 {
     public interface IMagic_Square
     {
-        void SetSuccessor(IMagic_Square nextDirection);
+        void SetSide(IMagic_Square nextDirection);
         bool IsMagicSquare(int[][] square, int sum);
     }
 }

@@ -21,7 +21,7 @@ namespace Magic_Square.Tests
             var horizontals = CreateHorizontals();
             var verticals = Substitute.For<IMagic_Square>();
 
-            horizontals.SetSuccessor(verticals);
+            horizontals.SetSide(verticals);
 
             //----------------------Act-------------------------------
             horizontals.IsMagicSquare(square, sum);
@@ -43,7 +43,7 @@ namespace Magic_Square.Tests
             var horizontals = CreateHorizontals();
             var verticals = CreateVerticals();
 
-            horizontals.SetSuccessor(verticals);
+            horizontals.SetSide(verticals);
 
             //----------------------Act-------------------------------
             var actual = horizontals.IsMagicSquare(square, sum);
@@ -65,7 +65,7 @@ namespace Magic_Square.Tests
             var horizontals = CreateHorizontals();
             var verticals = CreateVerticals();
 
-            horizontals.SetSuccessor(verticals);
+            horizontals.SetSide(verticals);
 
             //----------------------Act-------------------------------
             var actual = horizontals.IsMagicSquare(square, sum);
@@ -87,7 +87,7 @@ namespace Magic_Square.Tests
             var horizontals = CreateHorizontals();
             var verticals = CreateVerticals();
 
-            horizontals.SetSuccessor(verticals);
+            horizontals.SetSide(verticals);
 
             //----------------------Act-------------------------------
             var actual = horizontals.IsMagicSquare(square, sum);

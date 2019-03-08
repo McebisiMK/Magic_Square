@@ -20,7 +20,7 @@ namespace Magic_Square.Tests
             var diagonals = CreateDiagonals();
             var horizontals = Substitute.For<IMagic_Square>();
 
-            diagonals.SetSuccessor(horizontals);
+            diagonals.SetSide(horizontals);
 
             //--------------------Act---------------------------
             diagonals.IsMagicSquare(square, sum);
@@ -40,7 +40,7 @@ namespace Magic_Square.Tests
             var diagonals = CreateDiagonals();
             var horizontals = CreateHorizontals();
 
-            diagonals.SetSuccessor(horizontals);
+            diagonals.SetSide(horizontals);
 
             //--------------------Act---------------------------
             var actual = diagonals.IsMagicSquare(square, sum);
@@ -60,7 +60,7 @@ namespace Magic_Square.Tests
             var diagonals = CreateDiagonals();
             var horizontals = CreateHorizontals();
 
-            diagonals.SetSuccessor(horizontals);
+            diagonals.SetSide(horizontals);
 
             //--------------------Act---------------------------
             var actual = diagonals.IsMagicSquare(square, sum);

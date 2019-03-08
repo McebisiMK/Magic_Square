@@ -6,7 +6,7 @@ namespace Magic_Square.Services
     public class Verticals : IMagic_Square
     {
         private IMagic_Square _nextDirection;
-        public void SetSuccessor(IMagic_Square nextDirection)
+        public void SetSide(IMagic_Square nextDirection)
         {
             _nextDirection = nextDirection;
         }
